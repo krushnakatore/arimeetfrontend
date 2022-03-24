@@ -1,0 +1,19 @@
+.homeList {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  top: 70px;
+}
+
+.homeAllList {
+  align-items: center;
+  justify-content: center;
+}
+.checked-item {
+  border: 1px solid red;
+}
+.not-checked-item {
+  border: 1px solid blue;
+}
