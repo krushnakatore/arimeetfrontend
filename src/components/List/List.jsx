@@ -36,11 +36,14 @@ export const List = ({ ele }) => {
       className={css}
       style={{
         display: "flex",
-        alignIitems: "center",
+        alignItems: "center",
         justifyContent: "space-evenly",
-        width: "100%",
+        width: "70%",
+        backgroundColor: "grey",
+        borderRadius: "10px",
       }}
     >
+      <div>{ele.id}</div>
       <input
         type="checkbox"
         value={ele}

@@ -14,7 +14,7 @@ export const Home = () => {
 
   const getData = async () => {
     setIsLoading(true);
-    await fetch("http://localhost:3456/product")
+    await fetch("https://airmeetbackendforapp.herokuapp.com/product")
       .then((res) => res.json())
       .then((res) => {
         // console.log(res);
@@ -30,13 +30,15 @@ export const Home = () => {
 
   return (
     <div>
+      <Navbar />
       {isLoading ? (
-        <div>Loading...</div>
+        <div style={{ fontSize: "20px", color: "white", marginTop: "60px" }}>
+          Loading...
+        </div>
       ) : isError ? (
-        <div>Error in Loading...</div>
+        <div style={{ fontSize: "20px" }}>Error in Loading...</div>
       ) : (
         <div>
-          <Navbar />
           <div className="homeAllList">
             {checked.map((ele, ind) => {
               return (

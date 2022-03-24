@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Navbar } from "../navbar/Navbar";
 import "./wishlist.css";
 
 export const Wishlist = () => {
@@ -17,23 +18,45 @@ export const Wishlist = () => {
 
   return (
     <div>
-      {cartProducts.map((e) => {
-        return (
-          <div className="homeList" key={e._id}>
-            <div>{e.first_name}</div>
-            <div>
-              <img src={e.images} />
-            </div>
-            <button
-              onClick={() => {
-                handleDelete(e);
-              }}
-            >
-              Delete
-            </button>
+      <Navbar />
+      <div>
+        {cartProducts.length ? (
+          <div>
+            {cartProducts.map((e) => {
+              return (
+                <div className="homeList" key={e._id}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      width: "70%",
+                      backgroundColor: "grey",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <div>{e.first_name}</div>
+                    <div>
+                      <img src={e.images} />
+                    </div>
+                    <button
+                      onClick={() => {
+                        handleDelete(e);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        ) : (
+          <div style={{ marginTop: "60px", fontSize: "20px", color: "white" }}>
+            Wishlist is Empty..
+          </div>
+        )}
+      </div>
     </div>
   );
 };
