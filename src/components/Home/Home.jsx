@@ -3,7 +3,7 @@ import "./home.css";
 
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isError, setIsError] = useState(false);
   const [checked, setChecked] = useState([]);
   useEffect(() => {
     getData();
@@ -21,6 +21,7 @@ export const Home = () => {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setIsError(true);
       });
   };
 
@@ -37,6 +38,8 @@ export const Home = () => {
     <div>
       {isLoading ? (
         <div>Loading...</div>
+      ) : isError ? (
+        <div>Error in Loading...</div>
       ) : (
         <div className="homeAllList">
           {checked.map((ele, ind) => {
