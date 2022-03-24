@@ -26,7 +26,14 @@ export const Home = () => {
       });
   };
 
-  const handleAdd = () => {};
+  const handleAdd = (data) => {
+    if (localStorage.getItem("shopcart") === null) {
+      localStorage.setItem("shopcart", JSON.stringify([]));
+    }
+    let cart = JSON.parse(localStorage.getItem("shopcart"));
+    cart.push(data);
+    localStorage.setItem("shopcart", JSON.stringify(cart));
+  };
 
   return (
     <div>
@@ -41,7 +48,13 @@ export const Home = () => {
             {checked.map((ele, ind) => {
               return (
                 <div className="homeList" key={ele._id}>
-                  <input type="checkbox" value={ele} onClick={handleAdd} />
+                  <input
+                    type="checkbox"
+                    value={ele}
+                    onClick={() => {
+                      handleAdd(ele);
+                    }}
+                  />
                   <div>{ele.title}</div>
                   <div>
                     <img src={ele.img} />
