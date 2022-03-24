@@ -20,9 +20,9 @@ export const Wishlist = () => {
       {cartProducts.map((e) => {
         return (
           <div className="homeList" key={e._id}>
-            <div>{e.title}</div>
+            <div>{e.first_name}</div>
             <div>
-              <img src={e.img} />
+              <img src={e.images} />
             </div>
             <button
               onClick={() => {

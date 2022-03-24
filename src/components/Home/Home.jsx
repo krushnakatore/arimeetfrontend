@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { List } from "../List/List";
 import { Navbar } from "../navbar/Navbar";
 import "./home.css";
 
@@ -6,6 +7,7 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [checked, setChecked] = useState([]);
+
   useEffect(() => {
     getData();
   }, []);
@@ -26,15 +28,6 @@ export const Home = () => {
       });
   };
 
-  const handleAdd = (data) => {
-    if (localStorage.getItem("shopcart") === null) {
-      localStorage.setItem("shopcart", JSON.stringify([]));
-    }
-    let cart = JSON.parse(localStorage.getItem("shopcart"));
-    cart.push(data);
-    localStorage.setItem("shopcart", JSON.stringify(cart));
-  };
-
   return (
     <div>
       {isLoading ? (
@@ -48,18 +41,7 @@ export const Home = () => {
             {checked.map((ele, ind) => {
               return (
                 <div className="homeList" key={ele._id}>
-                  <input
-                    type="checkbox"
-                    value={ele}
-                    onClick={() => {
-                      handleAdd(ele);
-                    }}
-                  />
-                  <div>{ele.title}</div>
-                  <div>
-                    <img src={ele.img} />
-                  </div>
-                  <button>Add to Wishlist</button>
+                  <List ele={ele} />
                 </div>
               );
             })}
